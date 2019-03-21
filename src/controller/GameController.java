@@ -10,6 +10,7 @@ import entity.enemy.EnemyManager;
 import entity.player.PlayerManager;
 import map_manager.GeneralMapManager;
 import menu.MenuManager;
+import tools.LogWriter;
 
 public class GameController{
 	
@@ -23,8 +24,12 @@ public class GameController{
 	private GeneralMapManager map;
 	private Engine engine;
 	
+	public static LogWriter logger;
+	
 	public GameController() {
 		tick = new Clock();
+		logger = new LogWriter();
+		logger.log("Opening...");
 		
 		JFrame window = new JFrame("Flappy Turtle");
 		window.setSize(GlobalSettings.WINDOW_WIDTH + 20, //TODO explain why this puppy can talk
@@ -34,16 +39,24 @@ public class GameController{
 		window.setFocusTraversalKeysEnabled(false);
 		//window.setExtendedState(JFrame.MAXIMIZED_BOTH); //FULLSCREEN
 		//window.setUndecorated(true);
-		window.setVisible(true);
+		logger.log("...controller loaded");
+		
+		logger.log(GameImage.APPLE.name());
 
 		menu = new MenuManager();
+		logger.log("...menus loaded");
 		map = new GeneralMapManager();
+		logger.log("...map loaded");
 		player = new PlayerManager(menu, map::getTile, map::getOffset);
+		logger.log("...player loaded");
 		enemy = new EnemyManager(map::getTile, map::getOffset, player.getPlayerDimension(), this::removeEnemy);
+		logger.log("...enemy loaded");
 		engine = new Engine(window, menu, player, enemy, map::getTerrain);
+		logger.log("...engine loaded");
 		
 		IOEvent io = new IOEvent(player, menu);
 		window.addKeyListener(io);
+				window.setVisible(true);
 	}
 	
 	public static void main(String[] args) {
@@ -61,7 +74,7 @@ public class GameController{
 			timer = new Timer();
 		}
 
-		public void start() {
+		public void start() {			
 			menu.update();
 			player.update();
 			//enemy.update();

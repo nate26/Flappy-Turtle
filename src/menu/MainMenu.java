@@ -3,6 +3,7 @@ package menu;
 import java.awt.image.BufferedImage;
 
 import controller.AnimationLibrary;
+import controller.GameController;
 import controller.GameImage;
 import controller.GlobalSettings;
 import engine.ImagePanel;
@@ -15,6 +16,7 @@ public class MainMenu extends MenuScreen {
 
 	public MainMenu() {
 		super(GameImage.CURSOR.getImage());
+		GameController.logger.log("...setting up main menu");
 		setup();
 	}
 	

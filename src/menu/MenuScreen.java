@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import controller.GameController;
 import controller.GlobalSettings;
 import engine.ImagePanel;
 import engine.PanelContainer;
@@ -24,11 +25,13 @@ public class MenuScreen {
 	private Map<AnimationSequence, Integer> animationList;
 
 	public MenuScreen(Image cursor) {
+		GameController.logger.log("...creating main menu container");
 		
 		panelList = new ArrayList<ImagePanel>();
 		buttonList = new ArrayList<MenuButton>();
 		animationList = new HashMap<AnimationSequence, Integer>();
-		
+
+		GameController.logger.log("...loading main menu container");
 		menu = new PanelContainer();
 		menu.setSize(GlobalSettings.WINDOW_WIDTH, GlobalSettings.WINDOW_HEIGHT);
 		menu.setLocation(0, 0);

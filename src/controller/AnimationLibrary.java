@@ -112,12 +112,16 @@ public enum AnimationLibrary {
 		{
 			System.out.println("Relative path from the resources folder \"" + 
 					path + "\" for \"" + this.toString() + "\" did not find an image.");
+			GameController.logger.log("Relative path from the resources folder \"" + 
+					path + "\" for \"" + this.toString() + "\" did not find an image.");
 			throw new RuntimeException("Relative path from the resources folder \"" + 
 					path + "\" for \"" + this.toString() + "\" did not find an image.");
 		}
 		catch (URISyntaxException e) {
 			System.out.println("URI for the resources folder \"" + path + "\" for \"" + 
 					this.toString() + "\" did not find an image.");
+			GameController.logger.log("URI for the resources folder \"" + path + 
+					"\" for \"" + this.toString() + "\" did not find an image.");
 			throw new RuntimeException("URI for the resources folder \"" + path + 
 					"\" for \"" + this.toString() + "\" did not find an image.");
 		}
@@ -180,6 +184,8 @@ public enum AnimationLibrary {
     	try {
     		buffered = ImageIO.read(new File(relativePath));
 		} catch (IOException e) {
+			GameController.logger.log("Absolute path \"" + path + "\" for \"" + 
+					this.toString() + "\" did not find an image.");
 			throw new RuntimeException("Absolute path \"" + path + "\" for \"" + 
 					this.toString() + "\" did not find an image.");
 		}
