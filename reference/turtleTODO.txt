@@ -1,0 +1,31 @@
+TODO:
+
+__General__
+- Backgrounds package
+- images and animations
+- error logger
+  - default image instead of throwing error on no image found, if default image is not found then throw custom NoImageFound error
+  - player dimension resetX() if there is no terrain to stand on
+- NoImageFoundException
+- menu classes with menuIO
+- enemy
+- events
+
+__Map__
+- starting block for player, positional reference.
+
+__Player__
+- fire in tiletype and getCollision
+- player death
+- reset position on smush or pit with pause
+- respawning, paused while falling and unpaused when player hits ground
+- dealing with obsticles on respawn
+- end game if player cannot respawn (in player dimension)
+
+__Engine__
+- window scaling to resize or full screen
+- jpane location and size inits
+
+__Entity__
+- functional tool that detects collisions of enemy and player
+- split collisions of player... overlap collisions to separate functional tool for all entities

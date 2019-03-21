@@ -1,0 +1,8 @@
+Bugs List:
+- double jump sometimes when holding down up key
+- only land on planks from a jump when you are at the top most pixel of a plank
+- pauses with quick turning
+- not falling when accelerating into a wall
+
+Critical Errors:
+- exception thrown if jumping too high
